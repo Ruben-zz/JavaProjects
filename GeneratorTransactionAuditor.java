@@ -1,15 +1,32 @@
+import java.util.Scanner;
 
 public class GeneratorTransactionAuditor {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//variables y constantes
 		
-		String nombreBase = "         RuBen DarIo          ";
+		/*
+		 * Actualizacion con ingreso de datos
+		 * desde la terminal 
+		 * 
+		 * */
+		Scanner entrada = new Scanner(System.in);
 		
-		String email = "javadev2026@devj.com";
+	
 		
-		double montoBase = 5500.88;
+		System.out.println("Ingresa tu nombre y apellido: ");
+		
+		String nombreBase = entrada.nextLine();
+		
+		System.out.println("Ingresa tu email de la compañia: ");
+		
+		String email = entrada.nextLine();
+		
+		
+		//Ingreso de monto y constante IVA
+		
+		System.out.println("Ingresa el monto con almenos 2 decimales: ");
+		double montoBase = Double.parseDouble(entrada.nextLine());
 		
 		final double IVA = 0.16;
 		
@@ -36,6 +53,7 @@ public class GeneratorTransactionAuditor {
 		System.out.println("-----Verificacion: " + verificacion);
 		System.out.println("-----TOKEN SEGURIDAD: " + token);
 		
+		entrada.close();
 		
 	}
 
