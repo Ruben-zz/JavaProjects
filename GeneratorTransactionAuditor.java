@@ -42,7 +42,7 @@ public class GeneratorTransactionAuditor {
 			
 			boolean verificacion = email.contains("@devj.com");
 			//Imprime el token si el dominio corporativo es real,sino imprime error
-			if (verificacion == true) {
+			if (verificacion) {
 				//LOGICA DE MATEMATICA
 				
 				double montoFinal = (montoBase*IVA) + montoBase;
@@ -65,11 +65,11 @@ public class GeneratorTransactionAuditor {
 			
 			
 			
-			entrada.close();
+			
 		}
 		
 		
-		
+		entrada.close();
 		
 	}
 
