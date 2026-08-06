@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class GeneratorTransactionAuditor {
-
+	public static final double IVA = 0.16;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		final double IVA = 0.16;
 		/*
 		 * Actualizacion con ingreso de datos
 		 * desde la terminal 
@@ -44,23 +44,27 @@ public class GeneratorTransactionAuditor {
 		//Evalua tipo de moneda
 		
 		System.out.println("¿La Transaccion es en dolares?");
-		System.out.println("Si tu respuesta es si escribe true");
-		System.out.println("Si tu respuesta es no escribe false");
-		boolean monedaVerificacion = Boolean.parseBoolean(entrada.nextLine());
+		System.out.println("S/N");
+		String monedaVerificacion = entrada.nextLine();
 		
-		String simboloMoneda = monedaVerificacion ? "$" : "Bs";
+		String simboloMoneda = monedaVerificacion.equalsIgnoreCase("S") ? "$" : "Bs";
 		
 		
 		//Ingreso de monto y constante IVA
 		System.out.println("Ingresa el monto con almenos 2 decimales: ");
 		double montoBase = Double.parseDouble(entrada.nextLine());
-		//Bucle para verificar si el monto es <= a 0, en dado caso se cierra el programa
-		if (montoBase <= 0) {
-			System.out.println("ERROR: El monto de la transaccion debe ser mayor a cero.");
+		
+		//Bucle para evitar que se ingrese un monto no valido
+		while (montoBase <= 0) {
+				System.err.println("ERROR: El monto ingresado es inválido. Por favor, ingrese un monto superior a 0:");
+				montoBase = Double.parseDouble(entrada.nextLine());	
+		
 		}
-		else {
-			final double IVA = 0.16;
-			
+		
+		
+		
+		
+		
 			//Limpiar nombre y poner en mayusculas
 			
 			String cleanName = (nombreBase.toUpperCase()).strip();
@@ -92,8 +96,6 @@ public class GeneratorTransactionAuditor {
 			
 			
 			
-			
-		}
 		
 		
 		entrada.close();
