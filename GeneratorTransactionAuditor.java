@@ -4,16 +4,16 @@ public class GeneratorTransactionAuditor {
 	public static final double IVA = 0.16;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		final double IVA = 0.16;
 		/*
 		 * Actualizacion con ingreso de datos
 		 * desde la terminal 
 		 * 
 		 * */
+		int contador = 0;
 		Scanner entrada = new Scanner(System.in);
+		String exitProgram;
 		
-	
-		
+		do {
 		System.out.println("Ingresa tu nombre y apellido: ");
 		
 		String nombreBase = entrada.nextLine();
@@ -86,17 +86,20 @@ public class GeneratorTransactionAuditor {
 				System.out.println("-----Nombre: " + cleanName);
 				System.out.println("-----Correo Electronico: " + email);
 				System.out.println("-----Monto + IVA: " + Math.round(montoFinal) + simboloMoneda );
-				System.out.println("-----Verificacion: " + verificacion);
+				System.out.println("-----Verificacion: Valida");
 				System.out.println("-----TOKEN SEGURIDAD: " + token);
+				contador ++;
 			}
 			else {
 				System.out.println("ALETA INFRACCION: El correo ingresado no pertence a la red corporativa de @devj.com.");
 				System.out.println("Transaccion denegada...");
 			}
 			
+			System.out.println("Deseas hacer otra transaccion(Y/N)");
+			exitProgram = entrada.nextLine();
+		}while(exitProgram.equalsIgnoreCase("Y"));
 			
-			
-		
+		System.out.println("Ha finalizado el programa, se ha realizado exitosamente " + contador + " transacciones.");
 		
 		entrada.close();
 		
