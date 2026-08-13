@@ -11,12 +11,38 @@ public class GeneratorTransactionAuditor {
 		 * */
 		int contador = 0;
 		Scanner entrada = new Scanner(System.in);
+		
+		String nombreBase = "";
 		String exitProgram;
 		
 		do {
-		System.out.println("Ingresa tu nombre y apellido: ");
 		
-		String nombreBase = entrada.nextLine();
+			boolean nameVerification = false;
+			//este bucle se encarga de verificar si el usuario ingresa un nombre sin numeros
+		while(!nameVerification){	
+			boolean characterIsDigit = false;
+			System.out.println("Ingresa tu nombre y apellido: ");
+		
+			nombreBase = entrada.nextLine();
+		
+			for (int i = 0;i<nombreBase.length();i++) {
+			
+				if (Character.isDigit(nombreBase.charAt(i))) {
+					characterIsDigit = true;
+					System.out.println("gdg");
+					break;
+				}
+			
+				
+			}
+			
+			if (characterIsDigit) System.err.println("ERROR DE INTEGRIDAD: Nombre no pude contener numeros.");
+			
+			else nameVerification = true; 
+			
+		}
+		
+		
 		
 		System.out.println("Ingresa tu email de la compañia: ");
 		
