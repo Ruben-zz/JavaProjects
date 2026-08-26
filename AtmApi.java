@@ -15,7 +15,9 @@ public class AtmApi {
 		
 		int userPin = 0,userIndex = -1;
 		
+		int menuOption = 0;
 		
+		String exitProgram = "N";
 		
 		String userName = "";
 		
@@ -27,7 +29,7 @@ public class AtmApi {
 		
 		boolean isValidUser = false, isValidPin = false;
 		
-		
+	
 		
 		//User Input
 		while(!isValidUser){
@@ -69,7 +71,7 @@ public class AtmApi {
 		
 			//PIN verification l
 			if(pinDatabase[userIndex] == userPin) {
-				System.out.println("Authentication successful." + userNameDataBase[userIndex] + " Your balances is " + accountBalances[userIndex] + "$");
+				System.out.println("Authentication successful.");
 				isValidPin = true;
 				break;
 			}
@@ -78,7 +80,83 @@ public class AtmApi {
 			
 		}
 		
+		//interactive menu
+		
+		if (isValidPin == true && isValidUser == true) {
+			
+			do {
+				
+				System.out.println("=======WELCOME TO THE BANK======");
+				System.out.println("1-Check balance.");
+				System.out.println("2-Deposit funds.");
+				System.out.println("3-Withdraw funds.");
+				System.out.println("4-Exit.");
+				menuOption = Integer.parseInt(scan.nextLine());
+				
+				
+				switch (menuOption) {
+					case 1:
+						System.out.printf("Your balance is %.2f$",accountBalances[userIndex]);
+						System.out.println("");
+						break;
+					case 2:
+						System.out.println("Enter the amount to deposit.");
+						double depositFunds = Double.parseDouble(scan.nextLine());
+						accountBalances[userIndex] += depositFunds;
+						break;
+					case 3:
+						System.out.println("Opcion 3");
+						double withdrawFunds = Double.parseDouble(scan.nextLine());
+						
+						if(withdrawFunds > accountBalances[userIndex]) {
+							System.out.println("The withdrawal exceeds the funds in your account.");
+						}
+						else {
+							accountBalances[userIndex] -= withdrawFunds;
+						}
+						break;
+					case 4:
+						System.out.println("You have successfully logged out of the system.");
+						exitProgram = "Y";
+						break;
+					default:
+						System.out.println("Invalid option");
+				
+				
+				
+				
+				
+				}
+				
+				
 	
+				
+			}while(exitProgram.equalsIgnoreCase("N"));
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		scan.close();
 		
 	}
