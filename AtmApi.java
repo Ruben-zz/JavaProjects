@@ -7,10 +7,7 @@ public class AtmApi {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		// date time
-		LocalDateTime dateTime = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-		String text = dateTime.format(formatter);
+		
 		
 		
 		
@@ -106,6 +103,10 @@ public class AtmApi {
 				
 				switch (menuOption) {
 					case 1:
+						// date time
+						LocalDateTime dateTime = LocalDateTime.now();
+						DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+						String text = dateTime.format(formatter);
 						System.out.printf("Your balance is %.2f$ | Date: %s%n",accountBalances[userIndex],text);
 						break;
 					case 2:
